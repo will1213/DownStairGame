@@ -29,6 +29,7 @@ export default class EndScene extends Phaser.Scene {
       fontSize: '50px',
       fontStyle: 900,
       align: 'center',
+      wordWrap: { width: window.innerWidth, useAdvancedWrap: true },
     });
     this.scoreLabel.setOrigin(0.5, 0.5);
 
