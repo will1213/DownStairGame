@@ -21,7 +21,6 @@ export default class DownStair extends Phaser.Scene {
   preload() {
     this.load.image('sky', './assets/sky.png');
     this.load.image('ground', './assets/platform.png');
-    // this.load.image('coolImage,', './assets/coolimage.gif');
     this.load.spritesheet('coolImage', './assets/coolsprite.png', {
       frameWidth: 440, frameHeight: 466,
     });
