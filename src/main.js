@@ -2,6 +2,7 @@ import Phaser from 'phaser';
 
 import DownStair from './DownStair';
 import EndScene from './EndScene';
+import PauseScene from './PauseScene';
 
 const config = {
   type: Phaser.AUTO,
@@ -11,7 +12,7 @@ const config = {
   physics: {
     default: 'arcade',
   },
-  scene: [DownStair, EndScene],
+  scene: [DownStair, EndScene, PauseScene],
 };
 
 export default new Phaser.Game(config);

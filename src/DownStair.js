@@ -1,7 +1,7 @@
 import Phaser from 'phaser';
 
-const initialSpeed = -window.innerHeight / 10;
-const initialPlayerSpeed = window.innerWidth / 5;
+const initialSpeed = -window.innerHeight / 8;
+const initialPlayerSpeed = window.innerWidth / 4;
 const initialPlatformDelay = 2000;
 export default class DownStair extends Phaser.Scene {
   cursors;
@@ -80,6 +80,7 @@ export default class DownStair extends Phaser.Scene {
     this.player.body.allowGravity = false;
     this.cursors = this.input.keyboard.createCursorKeys();
 
+    this.events.on('resume', () => this.backgroundMusic.resume());
     // game over
     this.physics.world.on('worldbounds', (_, up, down) => {
       if (up || down) {
@@ -94,6 +95,15 @@ export default class DownStair extends Phaser.Scene {
     this.scoreLabel = this.add.text(20, 20, '0', {
       fontSize: '50px',
       fontStyle: 900,
+    });
+
+    this.pauseButton = this.add.text(window.innerWidth - 200, 20, 'Pause', {
+      fontSize: '50px',
+      fontStyle: 900,
+    }).setInteractive().on('pointerdown', () => {
+      this.scene.pause();
+      this.backgroundMusic.pause();
+      this.scene.launch('PauseScene');
     });
 
     this.layer.add([backgroundImage, this.player, this.scoreLabel]);
