@@ -80,7 +80,12 @@ export default class DownStair extends Phaser.Scene {
     this.player.body.allowGravity = false;
     this.cursors = this.input.keyboard.createCursorKeys();
 
-    this.events.on('resume', () => this.backgroundMusic.resume());
+    this.events.on('resume', () => {
+      this.backgroundMusic.resume();
+      if (this.coolSound.isPaused) {
+        this.coolSound.resume();
+      }
+    });
     // game over
     this.physics.world.on('worldbounds', (_, up, down) => {
       if (up || down) {
@@ -101,8 +106,13 @@ export default class DownStair extends Phaser.Scene {
       fontSize: '50px',
       fontStyle: 900,
     }).setInteractive().on('pointerdown', () => {
+      if (this.coolSound.isPlaying) {
+        this.coolSound.pause();
+      }
+
       this.scene.pause();
       this.backgroundMusic.pause();
+
       this.scene.launch('PauseScene');
     });
 
