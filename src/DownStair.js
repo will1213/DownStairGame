@@ -3,6 +3,7 @@ import Phaser from 'phaser';
 const initialSpeed = -window.innerHeight / 8;
 const initialPlayerSpeed = window.innerWidth / 4;
 const initialPlatformDelay = 2000;
+
 export default class DownStair extends Phaser.Scene {
   cursors;
 
@@ -24,6 +25,7 @@ export default class DownStair extends Phaser.Scene {
     this.load.spritesheet('coolImage', './assets/coolsprite.png', {
       frameWidth: 440, frameHeight: 466,
     });
+    this.load.image('poop', './assets/poop.png');
     this.load.spritesheet('dude', './assets/dude.png', { frameWidth: 32, frameHeight: 48 });
     this.load.audio('scream', './assets/scream.mp3');
     this.load.audio('backgroundMusic', './assets/backgroundmusic.mp3');
@@ -59,7 +61,10 @@ export default class DownStair extends Phaser.Scene {
       loop: true,
     });
 
-    this.player = this.physics.add.sprite(this.cameras.main.width / 2, 300, 'dude');
+    // Use poop as player for fun!
+    this.player = this.physics.add.sprite(this.cameras.main.width / 2, 300, 'poop');
+    this.player.scaleX = 0.1;
+    this.player.scaleY = 0.1;
     this.platforms = this.physics.add.group({
       allowGravity: false,
       immovable: true,
@@ -183,15 +188,15 @@ export default class DownStair extends Phaser.Scene {
     if (left.isDown) {
       this.player.setVelocityX(-this.getPlayerSpeed());
 
-      this.player.anims.play('left', true);
+      // this.player.anims.play('left', true);
     } else if (right.isDown) {
       this.player.setVelocityX(this.getPlayerSpeed());
 
-      this.player.anims.play('right', true);
+      // this.player.anims.play('right', true);
     } else {
       this.player.setVelocityX(0);
 
-      this.player.anims.play('turn');
+      // this.player.anims.play('turn');
     }
 
     if (!this.player.body.onFloor()) {
@@ -212,26 +217,26 @@ export default class DownStair extends Phaser.Scene {
       });
     }
 
-    if (!this.anims.exists('left')) {
-      this.anims.create({
-        key: 'left',
-        frames: this.anims.generateFrameNumbers('dude', { start: 0, end: 3 }),
-        frameRate: 10,
-        repeat: -1,
-      });
+    // if (!this.anims.exists('left')) {
+    //   this.anims.create({
+    //     key: 'left',
+    //     frames: this.anims.generateFrameNumbers('dude', { start: 0, end: 3 }),
+    //     frameRate: 10,
+    //     repeat: -1,
+    //   });
 
-      this.anims.create({
-        key: 'turn',
-        frames: [{ key: 'dude', frame: 4 }],
-        frameRate: 20,
-      });
+    //   this.anims.create({
+    //     key: 'turn',
+    //     frames: [{ key: 'dude', frame: 4 }],
+    //     frameRate: 20,
+    //   });
 
-      this.anims.create({
-        key: 'right',
-        frames: this.anims.generateFrameNumbers('dude', { start: 5, end: 8 }),
-        frameRate: 10,
-        repeat: -1,
-      });
-    }
+    //   this.anims.create({
+    //     key: 'right',
+    //     frames: this.anims.generateFrameNumbers('dude', { start: 5, end: 8 }),
+    //     frameRate: 10,
+    //     repeat: -1,
+    //   });
+    // }
   }
 }
