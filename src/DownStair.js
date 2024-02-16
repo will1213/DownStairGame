@@ -62,8 +62,8 @@ export default class DownStair extends Phaser.Scene {
 
     // Use poop as player for fun!
     this.player = this.physics.add.sprite(this.cameras.main.width / 2, 300, 'poop');
-    this.player.scaleX = 0.25;
-    this.player.scaleY = 0.25;
+    this.player.scaleX = 0.175;
+    this.player.scaleY = 0.175;
     this.platforms = this.physics.add.group({
       allowGravity: false,
       immovable: true,
