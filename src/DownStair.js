@@ -3,7 +3,6 @@ import Phaser from 'phaser';
 const initialSpeed = -window.innerHeight / 8;
 const initialPlayerSpeed = window.innerWidth / 4;
 const initialPlatformDelay = 2000;
-
 export default class DownStair extends Phaser.Scene {
   cursors;
 
@@ -63,8 +62,8 @@ export default class DownStair extends Phaser.Scene {
 
     // Use poop as player for fun!
     this.player = this.physics.add.sprite(this.cameras.main.width / 2, 300, 'poop');
-    this.player.scaleX = 0.1;
-    this.player.scaleY = 0.1;
+    this.player.scaleX = 0.25;
+    this.player.scaleY = 0.25;
     this.platforms = this.physics.add.group({
       allowGravity: false,
       immovable: true,
