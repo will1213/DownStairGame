@@ -24,7 +24,7 @@ export default class DownStair extends Phaser.Scene {
     this.load.spritesheet('coolImage', './assets/coolsprite.png', {
       frameWidth: 440, frameHeight: 466,
     });
-    this.load.image('poop', './assets/poop.png');
+    this.load.image('hachimi', './assets/hachimi.png');
     this.load.spritesheet('dude', './assets/dude.png', { frameWidth: 32, frameHeight: 48 });
     this.load.audio('scream', './assets/scream.mp3');
     this.load.audio('backgroundMusic', './assets/backgroundmusic.mp3');
@@ -60,8 +60,7 @@ export default class DownStair extends Phaser.Scene {
       loop: true,
     });
 
-    // Use poop as player for fun!
-    this.player = this.physics.add.sprite(this.cameras.main.width / 2, 300, 'poop');
+    this.player = this.physics.add.sprite(this.cameras.main.width / 2, 300, 'hachimi');
     this.player.scaleX = 0.175;
     this.player.scaleY = 0.17;
     this.platforms = this.physics.add.group({
