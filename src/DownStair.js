@@ -68,7 +68,7 @@ export default class DownStair extends Phaser.Scene {
       immovable: true,
     });
 
-    const firstPlatform = this.physics.add.sprite(this.cameras.main.width / 2, 350, 'ground');
+    const firstPlatform = this.physics.add.sprite(this.cameras.main.width / 2, 400, 'ground');
     this.platforms.add(firstPlatform);
     firstPlatform.setVelocityY(initialSpeed);
     firstPlatform.scaleX = 0.2;
