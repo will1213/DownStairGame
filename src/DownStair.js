@@ -35,7 +35,7 @@ export default class DownStair extends Phaser.Scene {
     this.createAnims();
 
     this.coolSound = this.sound.add('coolSound');
-    this.backgroundMusic = this.sound.add('backgroundMusic');
+    this.backgroundMusic = this.sound.add('backgroundMusic', { volume: 0.3 });
     this.backgroundMusic.loop = true;
     this.backgroundMusic.play();
     this.gameOverSound = this.sound.add('scream');
