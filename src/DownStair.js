@@ -71,7 +71,11 @@ export default class DownStair extends Phaser.Scene {
     const firstPlatform = this.physics.add.sprite(this.cameras.main.width / 2, 400, 'ground');
     this.platforms.add(firstPlatform);
     firstPlatform.setVelocityY(initialSpeed);
-    firstPlatform.scaleX = 0.2;
+    firstPlatform.scaleX = 0.4;
+    firstPlatform.scaleY = 0.25;
+    firstPlatform.body.setSize(firstPlatform.width, firstPlatform.height * 0.7);
+    firstPlatform.body.setOffset(0, firstPlatform.height * 0.35);
+    firstPlatform.refreshBody();
     this.physics.add.collider(this.player, firstPlatform);
 
     this.score = 0;
@@ -103,11 +107,15 @@ export default class DownStair extends Phaser.Scene {
     this.scoreLabel = this.add.text(20, 20, '0', {
       fontSize: '50px',
       fontStyle: 900,
+      fontFamily: '"Outfit", sans-serif',
+      color: '#333333',
     });
 
     this.pauseButton = this.add.text(window.innerWidth - 200, 20, 'Pause', {
       fontSize: '50px',
       fontStyle: 900,
+      fontFamily: '"Outfit", sans-serif',
+      color: '#333333',
     }).setInteractive().on('pointerdown', () => {
       if (this.coolSound.isPlaying) {
         this.coolSound.pause();
@@ -152,6 +160,10 @@ export default class DownStair extends Phaser.Scene {
     this.platforms.add(singlePlatform);
     singlePlatform.setData('score', true);
     singlePlatform.scaleX = platformScale;
+    singlePlatform.scaleY = 0.25;
+    singlePlatform.body.setSize(singlePlatform.width, singlePlatform.height * 0.7);
+    singlePlatform.body.setOffset(0, singlePlatform.height * 0.35);
+    singlePlatform.body.updateFromGameObject();
     singlePlatform.setVelocityY(this.getCurrentSpeed());
     this.physics.add.collider(this.player, singlePlatform, (player, platform) => {
       if (player.body.touching.down && platform.getData('score')) {

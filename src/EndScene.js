@@ -22,6 +22,8 @@ export default class EndScene extends Phaser.Scene {
     this.gameOverButton = this.add.text(window.innerWidth / 2, this.cameras.main.height / 4, 'Game Over', {
       fontSize: '50px',
       fontStyle: 900,
+      fontFamily: '"Outfit", sans-serif',
+      color: '#333333',
     });
     this.gameOverButton.setOrigin(0.5, 0.5);
 
@@ -30,12 +32,16 @@ export default class EndScene extends Phaser.Scene {
       fontStyle: 900,
       align: 'center',
       wordWrap: { width: window.innerWidth, useAdvancedWrap: true },
+      fontFamily: '"Outfit", sans-serif',
+      color: '#333333',
     });
     this.scoreLabel.setOrigin(0.5, 0.5);
 
     this.restartButton = this.add.text(window.innerWidth / 2, (this.cameras.main.height / 4) * 3, 'Restart', {
       fontSize: '50px',
       fontStyle: 900,
+      fontFamily: '"Outfit", sans-serif',
+      color: '#333333',
     }).setInteractive().on('pointerdown', () => {
       this.scene.stop();
       this.scene.launch('DownStair');

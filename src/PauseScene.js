@@ -11,6 +11,8 @@ export default class PauseScene extends Phaser.Scene {
       fontStyle: 900,
       align: 'center',
       wordWrap: { width: window.innerWidth, useAdvancedWrap: true },
+      fontFamily: '"Outfit", sans-serif',
+      color: '#333333',
     }).setInteractive().on('pointerdown', () => {
       this.scene.resume('DownStair');
       this.scene.stop();
