@@ -73,8 +73,8 @@ export default class DownStair extends Phaser.Scene {
     firstPlatform.setVelocityY(initialSpeed);
     firstPlatform.scaleX = 0.4;
     firstPlatform.scaleY = 0.25;
-    firstPlatform.body.setSize(firstPlatform.width, firstPlatform.height * 0.7);
-    firstPlatform.body.setOffset(0, firstPlatform.height * 0.35);
+    firstPlatform.body.setSize(firstPlatform.width * 0.8, firstPlatform.height * 0.5);
+    firstPlatform.body.setOffset(firstPlatform.width * 0.1, firstPlatform.height * 0.35);
     firstPlatform.refreshBody();
     this.physics.add.collider(this.player, firstPlatform);
 
@@ -161,8 +161,8 @@ export default class DownStair extends Phaser.Scene {
     singlePlatform.setData('score', true);
     singlePlatform.scaleX = platformScale;
     singlePlatform.scaleY = 0.25;
-    singlePlatform.body.setSize(singlePlatform.width, singlePlatform.height * 0.7);
-    singlePlatform.body.setOffset(0, singlePlatform.height * 0.35);
+    singlePlatform.body.setSize(singlePlatform.width * 0.8, singlePlatform.height * 0.5);
+    singlePlatform.body.setOffset(singlePlatform.width * 0.1, singlePlatform.height * 0.35);
     singlePlatform.body.updateFromGameObject();
     singlePlatform.setVelocityY(this.getCurrentSpeed());
     this.physics.add.collider(this.player, singlePlatform, (player, platform) => {
